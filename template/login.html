@@ -1,0 +1,59 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+
+
+
+<!-- Main Wrapper Start -->
+<h stytle="color:black,textalign=center">Mirror watch login</h>
+
+<div class="main-content-wrapper">
+    <div class="login-register-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-md--40">
+                    <h2 class="heading-secondary mb--30">Login</h2>
+                    <div class="login-reg-box p-4 bg--2">
+                        <form class="form" action="/login/" method="post">{% csrf_token %}
+                            <div class="form__group mb--20">
+
+
+                                
+                                {% if mess %}
+                                <div class="alert alert-info" role="alert">
+                                {{mess}}
+                                </div>
+                                {% endif %}    
+
+                                <label class="form__label" for="username_email">
+                                    Username or email address <span>*</span>
+                                </label>
+
+
+
+                                <input type="text" name="username_email" id="username_email" class="form__input form__input--2">
+                            </div>
+                            <div class="form__group mb--20">
+                                <label class="form__label" for="password">
+                                    Password <span>*</span>
+                                </label>
+                                <input type="password" name="password" id="password" class="form__input form__input--2">
+                            </div>
+                            <div class="form__group d-flex align-items-center">
+                                <button type="submit" class="btn btn-5 btn-style-1 color-1">Login</button>
+                                <div class="custom-checkbox ml--20">
+                                    <input type="checkbox" name="sessionStore" id="sessionStore" class="form__checkbox">
+                                    
+                                    <label for="sessionStore" class="form__checkbox--label">Remember me</label>
+                                </div>
+                            </div>
+                            <a href="" class="forgot-pass">Forgot your password?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Wrapper End -->
+{% endblock content %}
+      

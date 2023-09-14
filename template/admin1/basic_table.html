@@ -1,0 +1,115 @@
+{% extends 'admin1/headerfooter.html' %}
+{% block content %}
+<!--sidebar end-->
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+    <div class="panel-heading">
+     user table
+    </div>
+    <div>
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th> Name</th>
+            <th>e-mail</th>
+            <th>lastname</th>
+            <th>password</th>
+            <th>conpassword</th>
+
+           
+            <!--<th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in old %}
+          <tr data-expanded="true">
+            <td>{{i.id}}</td>
+            <td>{{i.fist_name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.password}}</td>
+            <td>{{i.con_pass}}</td>
+            <td><a href="/userupda/?uid={{i.id}}">update</a></td>
+            <td><a href="/delete/?uid={{i.id}}">delete</a></td>
+            <td>
+            
+          </tr>
+           {% endfor %}
+      
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<section class="wrapper">
+<div class="table-agile-info">
+  <div class="panel panel-default">
+     <div class="panel-heading">
+      message table
+     </div>
+     <div>
+       <table class="table" ui-jq="footable" ui-options='{
+         "paging": {
+           "enabled": true
+         },
+         "filtering": {
+           "enabled": true
+         },
+         "sorting": {
+           "enabled": true
+         }}'>
+         <thead>
+           <tr>
+             <th data-breakpoints="xs">ID</th>
+             <th> Name</th>
+             <th>mail</th>
+             <th>subject</th>
+             <th>message</th>
+             
+ 
+            
+             <!--<th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>-->
+           </tr>
+         </thead>
+         <tbody>
+           {% for x in first %}
+           <tr data-expanded="true">
+             <td>{{x.id}}</td>
+             <td>{{x.name}}</td>
+             <td>{{x.email}}</td>
+             <td>{{x.subject}}</td>
+             <td>{{x.message}}</td>
+             
+             
+           </tr>
+            {% endfor %}
+       
+         </tbody>
+       </table>
+     </div>
+   </div>
+ </div>
+</section>
+
+</section>
+</section>
+<!--main content end-->
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'admin1/headerfooter.html' %}
+{% block content %}
+<!--sidebar end-->
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+    <div class="panel-heading">
+     user table
+    </div>
+    <div>
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th> Name</th>
+            <th>Image</th>
+            <th>price</th>
+            <th>descrption</th>
+            <th>color</th>
+            <th>size</th>
+            <th>category</th>
+           
+            <!--<th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data1 %}
+          <tr data-expanded="true">
+            <td>{{i.id}}</td>
+            <td>{{i.modelname}}</td>
+            <!-- showin image in table usin this fun -->
+            <td><img src="{{i.image.url}}" style="width: 200px;height: 200px;"></td>
+            <td>{{i.price}}</td>
+            <td>{{i.description}}</td>
+            
+            <td>{{i.modelcolor}}</td>
+            <td>{{i.productsize}}</td>
+            <td>{{i.category}}</td>
+            <td><a href='/prod-update/?uid={{i.id}}'><i class="fa fa-edit">edit</i></a></td>
+            
+            <td><a href="/prod_delete/?uid={{i.id}}"><i class="fa fa-trash">delete</i></a></td>
+          </tr>
+           {% endfor %}
+       
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+</section>
+
+<!--main content end-->
+</section>
+{% endblock %}

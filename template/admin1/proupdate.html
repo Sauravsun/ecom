@@ -1,0 +1,69 @@
+{% extends 'admin1/headerfooter.html' %}
+{% block content %}
+<section id="main-content">
+<section class="wrapper">
+    <div class="panel panel-default">
+                        <header class="panel-heading">
+                          Update Product Details
+                          </header>
+                        {% for x in data2 %}
+                          <div class="panel-body">
+                            <div class="position-center">
+                                <form action="/prod-update/?uid={{x.id}}" method="post" enctype="multipart/form-data">
+                                  {% csrf_token %}
+                                <div class="form-group">
+                                    <label>Model Name</label>
+                                    <input type="text" class="form-control" name="uname" id="pname" value="{{x.modelname}}" placeholder="Enter product">
+                                </div>
+                                <div class="form-group">
+                                    <label >Model Color</label>
+                                    <input type="text" class="form-control" name="ucolor" id="mcolor" value="{{x.modelcolor}}" placeholder="model color">
+                                </div>
+                                <div class="form-group">
+                                    <label >price</label>
+                                    <input type="text" class="form-control" name="uprice" id="price" placeholder="Price" value="{{x.price}}">
+                                </div>
+                                 <div class="form-group">
+                                    <label >Product size</label>
+                                    <input type="text" class="form-control"  name="umsize" id="msize" placeholder="model size" value="{{x.productsize}}">
+                                </div>
+                                 <div class="form-group">
+                                    <label >Product description</label>
+                                    <input type="text" class="form-control"  name="uproddesciption" value='{{x.description}}' id="product description" placeholder="description">
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="exampleInput">Select image</label>
+                                  <img src="{{x.image.url}}" style="width:200px;height: 200px;" >
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleInput">Do you want to update image?</label>
+                                  <input type="radio"  name="imgeup" onchange="hide()" id="imgeup" value="yes"> yes
+                                  <input type="radio"  name="imgeup" onchange="hide()" id="imgeup"  value="no" checked> no
+
+
+                                <div class="form-group">
+                                    <label for="exampleInput">Select image</label>
+                                    <input type="file"  name="uimage" id="selectimage">
+                                </div>
+                                <div class="select_catagory">
+                                    <select class="select" name="ucategory" value='{{x.category}}'>
+                                      <option value="He">He</option>
+                                      <option  value="she">she</option>
+                                      <option value="kids">Kids</option>
+                                      <option value="unisex">unisex</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-info">Add Product</button>
+
+                            </form>
+                            </div>
+
+                            {% endfor %}
+
+                        </div>
+              
+
+
+</div></section></section>                          
+{% endblock %}
