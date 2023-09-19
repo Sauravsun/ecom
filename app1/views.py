@@ -221,13 +221,19 @@ def contact(request):
 
 stripe.api_key=settings.STRIPE_SECRET_KEY
 def checkout(request):
+
+    tot=request.GET['tot']
+
+    print(tot,"///////////////////////////////")
+    tot1=float(tot)*100
+    
     session=stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
             "price_data": {
                 "currency": "inr",
                 "product_data": {"name": "T-shirt"},
-                "unit_amount": int(100),
+                "unit_amount": int(tot1),
             },
             'quantity':1,
 
@@ -241,11 +247,6 @@ def checkout(request):
     )
     return redirect(session.url,code=303)
 
-
-
-
-
-            
 
 
 
