@@ -371,7 +371,7 @@
         </div>
         <!-- Breadcumb area End -->
 
-        <!-- Main content wrapper start -->
+               <!-- Main content wrapper start -->
 
         <div class="main-content-wrapper">
             <div class="cart-area pt--40 pb--80 pt-md--30 pb-md--60">
@@ -531,12 +531,13 @@
                                                 </tr>
                                                 <tr class="cart-total">
                                                     <th>TOTAL</th>
-                                                    <td><span class="price-ammount">$145.00</span></td>
+                                                    <td><span class="price-ammount">{{total}}</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <form action="/checkout/">
+
+                                    <form action="/checkout/?tot={{total}}" method="post">{% csrf_token %}
                                         <button type="submit">checkout</button>
                                     <!-- <a href="/checkout/" class="btn btn-medium btn-style-3">Proceed to Checkout</a> -->
                                 </form>
@@ -547,6 +548,7 @@
                 </div>      
             </div>
         </div>
+
 
         <!-- Main content wrapper end -->
 
